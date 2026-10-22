@@ -15,7 +15,7 @@
 html,body{height:100%;background:#0b0f17;overflow:hidden}
 body{font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased}
 #viewport{position:fixed;inset:0;display:grid;place-items:center}
-#stage{position:relative;width:1600px;height:900px;background:var(--bg);overflow:hidden;transform-origin:center center;flex:none}
+#stage{position:absolute;left:50%;top:50%;width:1600px;height:900px;background:var(--bg);overflow:hidden;transform-origin:center center;flex:none}
 #stage.nocursor{cursor:none}
 .scene{position:absolute;inset:0;opacity:0;visibility:hidden;transition:opacity .7s ease,visibility 0s linear .7s}
 .scene.active{opacity:1;visibility:visible;transition:opacity .7s ease,visibility 0s}
@@ -1337,7 +1337,7 @@ const $ = (s, r=document) => r.querySelector(s);
 let si = 0, st = 0, autoT = null;
 
 /* ---------- fit 1600x900 stage to window ---------- */
-function fit(){ const s = Math.min(innerWidth/1600, innerHeight/900); stage.style.transform = `scale(${s})`; }
+function fit(){ const s = Math.min(innerWidth/1600, innerHeight/900); stage.style.transform = `translate(-50%,-50%) scale(${s})`; }
 addEventListener('resize', fit); fit();
 
 /* ---------- global timer ---------- */
