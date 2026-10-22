@@ -1282,7 +1282,7 @@ svg [data-s], svg .tb{transform-box:fill-box;transform-origin:center}
 <!-- ================= SCENE: CLOSING ================= -->
 <section class="scene" id="close" data-off="1" data-steps="3">
 <style>
-#close .wl{position:absolute;left:50px;top:50px;width:930px;height:430px;border-radius:44px;background:linear-gradient(135deg,#132a5c,#0a1633);overflow:hidden;padding:60px 50px;color:#fff}
+#close .wl{position:absolute;left:50px;top:50px;width:930px;height:468px;border-radius:44px;background:linear-gradient(135deg,#132a5c,#0a1633);overflow:hidden;padding:60px 50px;color:#fff}
 #close .wl::before{content:"";position:absolute;right:-180px;top:-160px;width:640px;height:640px;border-radius:50%;background:radial-gradient(circle,rgba(31,111,154,.75),rgba(31,111,154,0) 65%)}
 #close .wl .ey{position:relative;font-family:var(--mono);font-size:20px;letter-spacing:6px;color:#3ec8f5;font-weight:700}
 #close .wl h2{position:relative;font-size:62px;font-weight:800;letter-spacing:-1.5px;line-height:1.08;margin-top:16px}
@@ -1291,6 +1291,15 @@ svg [data-s], svg .tb{transform-box:fill-box;transform-origin:center}
 #close .wl .in{width:470px;height:68px;border-radius:18px;background:#fff;color:#9aa4b4;font-size:24px;padding:20px 24px}
 #close .wl .btn{height:68px;padding:0 34px;border-radius:34px;background:linear-gradient(90deg,#3ec8f5,#2f7bf0);font-weight:800;font-size:24px;display:grid;place-items:center;box-shadow:0 10px 30px rgba(62,200,245,.35)}
 #close .wl .cb{position:relative;margin-top:20px;font-size:20px;color:#e6ecf7;display:flex;gap:12px;align-items:center}
+#close .wl .cnt{position:absolute;right:52px;top:58px;text-align:right;z-index:1}
+#close .wl .cnt .num{font-size:66px;font-weight:900;letter-spacing:-2px;line-height:1;font-variant-numeric:tabular-nums}
+#close .wl .cnt .num em{font-style:normal;color:#3ec8f5;display:inline-block;opacity:0;transform:scale(.4);transition:opacity .4s 1.5s,transform .5s cubic-bezier(.3,1.6,.5,1) 1.5s}
+#close .wl.on .cnt .num em{opacity:1;transform:none}
+#close .wl .cnt .av{display:flex;justify-content:flex-end;margin-top:12px}
+#close .wl .cnt .av i{width:36px;height:36px;border-radius:50%;border:2.5px solid #0f2149;margin-left:-9px;display:grid;place-items:center;opacity:0;transform:translateY(10px) scale(.6);transition:opacity .35s,transform .45s cubic-bezier(.3,1.5,.5,1)}
+#close .wl.on .cnt .av i{opacity:1;transform:none}
+#close .wl .cnt .av svg{width:16px;height:16px}
+#close .wl .cnt small{display:block;margin-top:10px;font-size:16px;color:#c8d4ea}
 #close .wl .cb i{width:24px;height:24px;border-radius:6px;background:#2f7bf0;display:grid;place-items:center;font-style:normal;font-size:16px}
 #close .mis{position:absolute;left:1030px;top:70px;width:520px}
 #close .mis p{font-size:28px;color:var(--muted);line-height:1.4;margin-top:36px}
@@ -1313,7 +1322,7 @@ svg [data-s], svg .tb{transform-box:fill-box;transform-origin:center}
 #close .tick::before{left:0;background:linear-gradient(90deg,#fff,rgba(255,255,255,0))}
 #close .tick::after{right:0;background:linear-gradient(270deg,#fff,rgba(255,255,255,0))}
 </style>
-  <div class="wl up" data-s="1"><div class="ey">FOR EVERYONE</div><h2>Join the waitlist<br>&amp; newsletter.</h2><p>Sign up yourself or a loved one. One short update a month, no spam.</p>
+  <div class="wl up" data-s="1" id="wlBox"><div class="cnt"><div class="num"><span id="wlNum">0</span><em>+</em></div><div class="av"><i style="background:#3f63d9;transition-delay:0.25s"><svg viewBox="0 0 16 16"><circle cx="8" cy="5.2" r="2.9" fill="none" stroke="#fff" stroke-width="1.6"/><path d="M2.6 14.2c.6-3 2.8-4.6 5.4-4.6s4.8 1.6 5.4 4.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></svg></i><i style="background:#2aa7e0;transition-delay:0.37s"><svg viewBox="0 0 16 16"><circle cx="8" cy="5.2" r="2.9" fill="none" stroke="#fff" stroke-width="1.6"/><path d="M2.6 14.2c.6-3 2.8-4.6 5.4-4.6s4.8 1.6 5.4 4.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></svg></i><i style="background:#7b5be6;transition-delay:0.49s"><svg viewBox="0 0 16 16"><circle cx="8" cy="5.2" r="2.9" fill="none" stroke="#fff" stroke-width="1.6"/><path d="M2.6 14.2c.6-3 2.8-4.6 5.4-4.6s4.8 1.6 5.4 4.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></svg></i><i style="background:#f2a33a;transition-delay:0.61s"><svg viewBox="0 0 16 16"><circle cx="8" cy="5.2" r="2.9" fill="none" stroke="#fff" stroke-width="1.6"/><path d="M2.6 14.2c.6-3 2.8-4.6 5.4-4.6s4.8 1.6 5.4 4.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></svg></i><i style="background:#22b573;transition-delay:0.73s"><svg viewBox="0 0 16 16"><circle cx="8" cy="5.2" r="2.9" fill="none" stroke="#fff" stroke-width="1.6"/><path d="M2.6 14.2c.6-3 2.8-4.6 5.4-4.6s4.8 1.6 5.4 4.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></svg></i><i style="background:#ef4b5f;transition-delay:0.85s"><svg viewBox="0 0 16 16"><circle cx="8" cy="5.2" r="2.9" fill="none" stroke="#fff" stroke-width="1.6"/><path d="M2.6 14.2c.6-3 2.8-4.6 5.4-4.6s4.8 1.6 5.4 4.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></svg></i></div><small>Patients, families &amp; loved ones</small></div><div class="ey">FOR EVERYONE</div><h2>Join the waitlist<br>&amp; newsletter.</h2><p>Sign up yourself or a loved one. One short update a month, no spam.</p>
     <div class="form"><div class="in">you@email.com</div><div class="btn">Join the waitlist</div></div><div class="cb"><i>✓</i>Also send me the monthly newsletter</div></div>
   <div class="mis" data-s="2">
     <svg width="520" height="150" viewBox="0 0 520 150"><path class="draw drawslow" pathLength="1" d="M0 80H110L130 80L145 25L168 135L185 80H290L310 80L325 25L348 135L365 80H520" stroke="#2f6fdb" stroke-width="8" fill="none" stroke-linejoin="round"/></svg>
@@ -1568,6 +1577,11 @@ stage.addEventListener('click', e=>{ next(); });
 stage.addEventListener('contextmenu', e=>{ e.preventDefault(); prev(); });
 let idle; addEventListener('mousemove', ()=>{ stage.classList.remove('nocursor'); $('#help').classList.add('show'); clearTimeout(idle); idle=setTimeout(()=>{ stage.classList.add('nocursor'); $('#help').classList.remove('show'); },2000); });
 
+/* waitlist counter: 0 -> 100 when the waitlist box appears */
+(function(){ const box=document.getElementById('wlBox'), num=document.getElementById('wlNum'); if(!box||!num) return; let raf=0, shown=false;
+  const run=()=>{ cancelAnimationFrame(raf); const t0=performance.now(), D=1500; const step=t=>{ const p=Math.min(1,(t-t0)/D), e=1-Math.pow(1-p,3); num.textContent=Math.round(100*e); if(p<1) raf=requestAnimationFrame(step); }; raf=requestAnimationFrame(step); };
+  new MutationObserver(()=>{ const on=box.classList.contains('on'); if(on&&!shown){ shown=true; if(document.getElementById('stage').classList.contains('instant')) num.textContent='100'; else run(); } else if(!on&&shown){ shown=false; cancelAnimationFrame(raf); num.textContent='0'; } }).observe(box,{attributes:true,attributeFilter:['class']});
+})();
 window.__deck = {go, next, prev, scenes:()=>scenes.map((s,i)=>[s.id,maxOf(i)])};
 apply(true);
 })();
