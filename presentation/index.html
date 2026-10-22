@@ -209,7 +209,7 @@ svg [data-s], svg .tb{transform-box:fill-box;transform-origin:center}
 
   <div id="mon"><div class="reveal" id="monrev"></div></div>
 
-  <div class="words" data-s="3" data-e="6"><span id="w3">HEART ATTACK</span><span id="w4">SEIZURE</span><span id="w5">STROKE</span></div>
+  <div class="words" data-s="3" data-e="6"><span id="w3">HEART ATTACK</span><span id="w4">STROKE</span><span id="w5">SEIZURE</span></div>
 
   <div id="qc">
     <div class="q down" data-s="8"  style="left:330px;top:150px"><b>Allergic to any medication?</b><div class="field"><span class="u">???</span></div></div>
@@ -1487,7 +1487,7 @@ let simI = null, clockI = null, chartI=null;
 const HOOK = {
   intro(k, inst){ if(!inst) return; const els=[...document.querySelectorAll('#intro [data-s]')]; els.forEach(e=>e.dataset.hold='1'); const replay=()=>{ if(stage.classList.contains('instant')) return requestAnimationFrame(replay); els.forEach(e=>e.classList.remove('on')); void document.getElementById('intro').offsetWidth; setTimeout(()=>els.forEach(e=>{ e.classList.add('on'); delete e.dataset.hold; }),120); }; requestAnimationFrame(replay); },
   open(k, inst){
-    const mon=$('#mon'); const v = k<1?null : k===1?'calm' : k===2?'fast' : k===3?'ha' : k===4?'sz' : k===5?'st' : 'flat';
+    const mon=$('#mon'); const v = k<1?null : k===1?'calm' : k===2?'fast' : k===3?'ha' : k===4?'st' : k===5?'sz' : 'flat';
     mon.classList.toggle('started', k>=1);
     mon.querySelectorAll('.layer').forEach(l=>l.classList.toggle('cur', l.dataset.v===v));
     mon.classList.toggle('low', k>=7); mon.classList.toggle('gone', k>=16);
