@@ -1,0 +1,756 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Health Tech Regulatory Map · Vitaegis</title>
+<meta name="description" content="An interactive map of the rules, laws, standards and deadlines for health tech startups: Spain, the EU, the US and global markets.">
+<meta property="og:title" content="Health Tech Regulatory Map · Vitaegis">
+<meta property="og:description" content="Pick what you are building and see which rules apply in Spain, the EU, the US and beyond, with deadlines and a launch checklist.">
+<meta property="og:image" content="https://vitaegis.tech/og.png">
+<meta name="theme-color" content="#0A1733">
+<link rel="icon" href="../favicon.png">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@600;700;800;900&family=Lato:wght@400;700&family=JetBrains+Mono:wght@500;700&display=swap">
+<style>
+:root{
+  --navy:#0A1733;--navy-2:#12306A;--ink:#0A1733;--ink-2:#4A5873;--ink-3:#8491A6;
+  --bg:#FFFFFF;--bg-soft:#F4F8FD;--card:#FFFFFF;--line:rgba(10,23,51,.10);--line-2:rgba(10,23,51,.18);
+  --blue:#2B7BFF;--cyan:#3FD0FF;--green:#1FB877;--amber:#C98A12;--red:#F0485B;
+  --es:#E0533D;--eu:#2B7BFF;--us:#12306A;--gl:#1FB877;
+  --shadow:0 24px 60px rgba(20,50,110,.13);--shadow-s:0 8px 24px rgba(20,50,110,.08);
+  --f-display:"Red Hat Display","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --f-body:"Lato","Segoe UI",system-ui,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+  --gutter:clamp(16px,4vw,40px);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55;overflow-x:hidden}
+a{color:var(--blue)}
+button{font:inherit;color:inherit}
+.wrap{max-width:1240px;margin-inline:auto;padding-inline:var(--gutter)}
+h1,h2,h3,h4{font-family:var(--f-display);margin:0;letter-spacing:-.01em;text-wrap:balance}
+.eyebrow{font-family:var(--f-mono);font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--blue);margin:0 0 12px}
+.muted{color:var(--ink-2)}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:50;padding-block:12px;background:linear-gradient(var(--bg) 60%,rgba(255,255,255,0))}
+.nav-in{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:8px 10px 8px 18px;border-radius:999px;background:rgba(255,255,255,.88);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid var(--line);box-shadow:0 12px 34px rgba(20,50,110,.10)}
+.nav img{height:36px;width:auto;display:block}
+.nav-links{display:flex;gap:22px;font-size:14.5px;font-weight:700}
+.nav-links a{color:var(--ink);text-decoration:none}
+.nav-links a:hover{color:var(--blue)}
+.pill{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:999px;font-family:var(--f-display);font-weight:800;font-size:14.5px;text-decoration:none;border:0;cursor:pointer}
+.pill-p{background:linear-gradient(135deg,var(--cyan),var(--blue));color:#fff;box-shadow:0 10px 24px rgba(43,123,255,.3)}
+@media (max-width:820px){.nav-links{display:none}}
+
+/* hero */
+.hero{padding:clamp(28px,5vw,56px) 0 clamp(20px,3vw,32px)}
+.hero h1{font-size:clamp(34px,5.4vw,62px);font-weight:900;line-height:1.02;max-width:15ch}
+.hero h1 span{background:linear-gradient(135deg,var(--cyan),var(--blue));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p.lead{font-size:clamp(17px,1.6vw,19px);color:var(--ink-2);max-width:62ch;margin:18px 0 0}
+.asof{display:inline-flex;align-items:center;gap:8px;margin-top:18px;font-family:var(--f-mono);font-size:12.5px;color:var(--ink-2);background:var(--bg-soft);border:1px solid var(--line);border-radius:999px;padding:6px 12px}
+.asof i{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px rgba(31,184,119,.18)}
+
+/* profile builder */
+.builder{background:var(--navy);color:#EAF2FF;border-radius:28px;padding:clamp(20px,3vw,32px);box-shadow:var(--shadow);position:relative;overflow:hidden}
+.builder::before{content:"";position:absolute;inset:-40% -10% auto auto;width:520px;height:520px;background:radial-gradient(circle,rgba(63,208,255,.22),transparent 65%);pointer-events:none}
+.builder h2{font-size:clamp(22px,2.4vw,28px);font-weight:800;color:#fff}
+.builder .sub{color:#B4C4E2;margin:6px 0 0;font-size:15px}
+.qgrid{display:grid;grid-template-columns:1.25fr 1fr 1fr;gap:22px;margin-top:22px;position:relative}
+@media (max-width:980px){.qgrid{grid-template-columns:1fr}}
+.q h3{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:#7FB2FF;font-weight:700;margin-bottom:10px}
+.seg{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:6px}
+.seg button{border:0;background:transparent;color:#C9D7F0;border-radius:11px;padding:10px 8px;cursor:pointer;text-align:left;line-height:1.25}
+.seg button b{display:block;font-family:var(--f-display);font-size:15px;color:#fff;font-weight:800}
+.seg button small{font-size:12px;color:#9FB2D6}
+.seg button[aria-pressed="true"]{background:linear-gradient(135deg,rgba(63,208,255,.25),rgba(43,123,255,.45));box-shadow:inset 0 0 0 1px rgba(127,178,255,.6)}
+@media (max-width:520px){.seg{grid-template-columns:1fr}}
+.toggles{display:grid;gap:8px}
+.tg{display:flex;align-items:center;justify-content:space-between;gap:12px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04);border-radius:14px;padding:9px 12px;cursor:pointer;text-align:left;width:100%}
+.tg span{font-size:14.5px;color:#EAF2FF;font-weight:700}
+.tg i{flex:none;width:38px;height:22px;border-radius:999px;background:rgba(255,255,255,.18);position:relative;transition:background .2s}
+.tg i::after{content:"";position:absolute;top:3px;left:3px;width:16px;height:16px;border-radius:50%;background:#fff;transition:transform .2s}
+.tg[aria-pressed="true"] i{background:var(--blue)}
+.tg[aria-pressed="true"] i::after{transform:translateX(16px)}
+.mk{display:flex;flex-wrap:wrap;gap:8px}
+.mk button{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.04);color:#C9D7F0;border-radius:999px;padding:8px 14px;cursor:pointer;font-weight:700;font-size:14px}
+.mk button i{width:9px;height:9px;border-radius:50%;background:var(--c)}
+.mk button[aria-pressed="true"]{background:#fff;color:var(--navy);border-color:#fff}
+.result{display:flex;flex-wrap:wrap;gap:12px 26px;align-items:baseline;margin-top:24px;padding-top:20px;border-top:1px solid rgba(255,255,255,.12);position:relative}
+.result .big{font-family:var(--f-display);font-weight:900;font-size:clamp(30px,3.4vw,40px);color:#fff;line-height:1}
+.result .lbl{color:#B4C4E2;font-size:14.5px}
+.result .next{margin-left:auto;font-size:14.5px;color:#EAF2FF}
+.result .next b{color:var(--cyan)}
+@media (max-width:760px){.result .next{margin-left:0;width:100%}}
+
+/* section */
+.sec{padding-block:clamp(40px,6vw,72px)}
+.sec-h{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:12px 24px;margin-bottom:22px}
+.sec-h h2{font-size:clamp(26px,3.2vw,38px);font-weight:900}
+.sec-h p{margin:8px 0 0;color:var(--ink-2);max-width:62ch}
+.legend{display:flex;flex-wrap:wrap;gap:14px;font-size:13px;color:var(--ink-2)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:10px;height:10px;border-radius:3px}
+
+/* map grid */
+.mapgrid{--cols:4;display:grid;grid-template-columns:150px repeat(var(--cols),minmax(0,1fr));border:1px solid var(--line);border-radius:22px;overflow:clip;background:var(--card);box-shadow:var(--shadow-s)}
+.mh{position:sticky;top:82px;z-index:5;background:var(--card);padding:14px 14px 12px;border-bottom:1px solid var(--line);border-left:1px solid var(--line)}
+.mh:first-child{border-left:0}
+.mh b{display:flex;align-items:center;gap:8px;font-family:var(--f-display);font-weight:900;font-size:17px}
+.mh b i{width:11px;height:11px;border-radius:50%;background:var(--c)}
+.mh small{display:block;color:var(--ink-3);font-size:12px;margin-top:2px}
+.mh .bar{height:3px;border-radius:3px;background:var(--c);margin-top:10px;opacity:.85}
+.rl{padding:14px;border-top:1px solid var(--line);background:var(--bg-soft)}
+.rl b{font-family:var(--f-display);font-weight:800;font-size:15px;display:block;line-height:1.2}
+.rl small{color:var(--ink-3);font-size:12px;line-height:1.3;display:block;margin-top:4px}
+.cell{padding:10px;border-top:1px solid var(--line);border-left:1px solid var(--line);display:flex;flex-direction:column;gap:8px;min-height:64px}
+.cell.empty::after{content:"—";color:var(--ink-3);font-size:13px;padding:4px 6px}
+.chip{display:block;width:100%;text-align:left;cursor:pointer;border:1px solid var(--line-2);border-left:4px solid var(--c);background:#fff;border-radius:12px;padding:9px 11px 10px;transition:transform .15s,box-shadow .15s,opacity .2s,filter .2s}
+.chip:hover{transform:translateY(-1px);box-shadow:0 8px 20px rgba(20,50,110,.12)}
+.chip:focus-visible{outline:3px solid rgba(43,123,255,.45);outline-offset:2px}
+.chip b{display:block;font-family:var(--f-display);font-weight:800;font-size:14.5px;line-height:1.2}
+.chip span{display:block;font-size:12.5px;color:var(--ink-2);line-height:1.35;margin-top:3px}
+.chip .tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:7px}
+.tag{font-family:var(--f-mono);font-size:10.5px;font-weight:700;letter-spacing:.04em;padding:2px 7px;border-radius:999px;background:var(--bg-soft);color:var(--ink-2);border:1px solid var(--line)}
+.tag.up{background:rgba(201,138,18,.10);color:#8A5E08;border-color:rgba(201,138,18,.3)}
+.tag.dl{background:rgba(240,72,91,.08);color:#B42A3B;border-color:rgba(240,72,91,.28)}
+.tag.ok{background:rgba(31,184,119,.10);color:#137A4F;border-color:rgba(31,184,119,.3)}
+.chip.off{opacity:.38;filter:saturate(.2)}
+.chip.off:hover{opacity:.75}
+.hide-off .chip.off{display:none}
+.showall{display:inline-flex;align-items:center;gap:10px;font-size:14px;font-weight:700;color:var(--ink-2);cursor:pointer;user-select:none}
+.showall input{width:18px;height:18px;accent-color:var(--blue)}
+/* mobile market tabs */
+.mtabs{display:none;gap:6px;overflow-x:auto;padding:4px;background:var(--bg-soft);border:1px solid var(--line);border-radius:14px;margin-bottom:12px}
+.mtabs button{flex:1 0 auto;border:0;background:transparent;padding:9px 14px;border-radius:10px;font-weight:800;font-family:var(--f-display);cursor:pointer;display:inline-flex;align-items:center;gap:7px;white-space:nowrap}
+.mtabs button i{width:9px;height:9px;border-radius:50%;background:var(--c)}
+.mtabs button[aria-selected="true"]{background:#fff;box-shadow:var(--shadow-s)}
+@media (max-width:860px){
+  .mtabs{display:flex;position:sticky;top:76px;z-index:6;background:rgba(244,248,253,.96);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+  .mapgrid{grid-template-columns:1fr}
+  .mh{display:none}
+  .rl{border-top:1px solid var(--line)}
+  .rl:first-of-type{border-top:0}
+  .cell{border-left:0;border-top:0;padding:10px 12px 14px}
+  .cell[data-hidden="1"]{display:none}
+  .cell.empty{display:none}
+}
+
+/* standards */
+.stds{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
+.std{border:1px solid var(--line);border-radius:16px;padding:14px 16px;background:#fff;transition:opacity .2s}
+.std b{font-family:var(--f-mono);font-size:13px;font-weight:700;color:var(--navy-2)}
+.std p{margin:6px 0 0;font-size:14px;color:var(--ink-2);line-height:1.4}
+.std.off{opacity:.38}
+
+/* timeline */
+.tl{position:relative;display:grid;gap:0}
+.yr{display:grid;grid-template-columns:90px 1fr;gap:18px}
+.yr>h3{font-family:var(--f-display);font-weight:900;font-size:22px;color:var(--ink-3);padding-top:14px;position:sticky;top:84px;align-self:start}
+.yr.now>h3{color:var(--blue)}
+.evs{border-left:2px solid var(--line);padding:8px 0 18px 22px;display:grid;gap:10px}
+.ev{position:relative;display:grid;grid-template-columns:110px 1fr;gap:14px;align-items:start;border:1px solid var(--line);border-radius:14px;padding:11px 14px;background:#fff;cursor:pointer;text-align:left;width:100%;transition:opacity .2s}
+.ev::before{content:"";position:absolute;left:-30px;top:16px;width:12px;height:12px;border-radius:50%;background:#fff;border:3px solid var(--c)}
+.ev time{font-family:var(--f-mono);font-size:12.5px;font-weight:700;color:var(--ink-2);padding-top:2px}
+.ev b{font-family:var(--f-display);font-weight:800;font-size:15.5px;display:block;line-height:1.25}
+.ev span{display:block;color:var(--ink-2);font-size:13.5px;margin-top:2px;line-height:1.4}
+.ev.past{background:var(--bg-soft)}
+.ev.past::before{background:var(--c)}
+.ev.off{opacity:.35}
+.ev.nextup{border-color:var(--blue);box-shadow:0 0 0 3px rgba(43,123,255,.15)}
+.ev .flag{display:inline-block;margin-left:8px;font-family:var(--f-mono);font-size:10.5px;font-weight:700;color:#fff;background:var(--blue);border-radius:999px;padding:2px 8px;vertical-align:2px}
+.todayline{display:flex;align-items:center;gap:10px;margin:2px 0 4px -29px;font-family:var(--f-mono);font-size:11.5px;font-weight:700;color:var(--blue)}
+.todayline::before{content:"";width:16px;height:16px;border-radius:50%;background:var(--blue);box-shadow:0 0 0 5px rgba(43,123,255,.18)}
+.todayline::after{content:"";flex:1;height:2px;background:repeating-linear-gradient(90deg,var(--blue) 0 6px,transparent 6px 11px)}
+@media (max-width:640px){.yr{grid-template-columns:1fr;gap:4px}.yr>h3{position:static;padding-top:6px}.ev{grid-template-columns:1fr;gap:2px}}
+
+/* path */
+.path{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px;counter-reset:st}
+@media (max-width:1060px){.path{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:620px){.path{grid-template-columns:1fr}}
+.stage{border:1px solid var(--line);border-radius:20px;padding:16px;background:#fff;display:flex;flex-direction:column}
+.stage header{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:10px}
+.stage h3{font-size:17px;font-weight:900}
+.stage h3::before{counter-increment:st;content:counter(st);display:inline-grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--navy);color:#fff;font-size:13px;margin-right:8px;vertical-align:1px}
+.prog{font-family:var(--f-mono);font-size:11.5px;font-weight:700;color:var(--ink-3)}
+.prog.done{color:var(--green)}
+.stage ul{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.stage label{display:flex;gap:9px;align-items:flex-start;font-size:14px;line-height:1.35;cursor:pointer;padding:5px 4px;border-radius:8px}
+.stage label:hover{background:var(--bg-soft)}
+.stage input{margin-top:2px;width:16px;height:16px;flex:none;accent-color:var(--green)}
+.stage input:checked+span{color:var(--ink-3);text-decoration:line-through}
+.stage label.na{display:none}
+.bar2{height:6px;border-radius:6px;background:var(--bg-soft);overflow:hidden;margin-top:auto;padding-top:0}
+.bar2 i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--cyan),var(--green));transition:width .3s}
+.stage .bar2{margin-top:14px}
+.reset{background:none;border:0;color:var(--ink-3);font-size:13px;text-decoration:underline;cursor:pointer}
+
+/* drawer */
+.scrim{position:fixed;inset:0;background:rgba(10,23,51,.38);opacity:0;pointer-events:none;transition:opacity .25s;z-index:80}
+.scrim.on{opacity:1;pointer-events:auto}
+.drawer{position:fixed;top:0;right:0;height:100%;width:min(480px,100%);background:#fff;z-index:90;box-shadow:-20px 0 60px rgba(10,23,51,.2);transform:translateX(105%);transition:transform .3s cubic-bezier(.2,.8,.2,1);display:flex;flex-direction:column}
+.drawer.on{transform:none}
+.dr-top{padding:18px 20px 16px;border-bottom:1px solid var(--line);position:relative}
+.dr-top .x{position:absolute;top:14px;right:14px;width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:#fff;cursor:pointer;font-size:20px;line-height:1}
+.dr-meta{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px;padding-right:44px}
+.dr-mk{display:inline-flex;align-items:center;gap:6px;font-family:var(--f-mono);font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#fff;background:var(--c);border-radius:999px;padding:3px 10px}
+.dr-top h2{font-size:24px;font-weight:900;line-height:1.15;padding-right:30px}
+.dr-top p{margin:8px 0 0;color:var(--ink-2)}
+.dr-body{padding:16px 20px 28px;overflow-y:auto;flex:1}
+.dr-body h4{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--blue);margin:18px 0 8px}
+.dr-body ul{margin:0;padding-left:18px}
+.dr-body li{margin:5px 0;line-height:1.45}
+.applies{display:flex;align-items:flex-start;gap:10px;padding:11px 13px;border-radius:12px;font-size:14.5px}
+.applies.yes{background:rgba(31,184,119,.09);color:#0F6A44}
+.applies.no{background:var(--bg-soft);color:var(--ink-2)}
+.dr-dates{display:grid;gap:6px}
+.dr-dates div{display:grid;grid-template-columns:96px 1fr;gap:10px;font-size:14px}
+.dr-dates time{font-family:var(--f-mono);font-size:12.5px;font-weight:700;color:var(--ink-2)}
+.dr-src a{display:block;padding:7px 0;border-bottom:1px solid var(--line);text-decoration:none;font-weight:700;font-size:14.5px}
+.dr-src a:hover{text-decoration:underline}
+.dr-rel{display:flex;flex-wrap:wrap;gap:6px}
+.dr-rel button{border:1px solid var(--line-2);background:#fff;border-radius:999px;padding:5px 11px;font-size:13px;cursor:pointer;font-weight:700}
+.dr-rel button:hover{border-color:var(--blue);color:var(--blue)}
+@media (max-width:640px){
+  .drawer{top:auto;bottom:0;height:88vh;width:100%;border-radius:22px 22px 0 0;transform:translateY(105%)}
+  .drawer.on{transform:none}
+}
+
+footer{background:var(--navy);color:#B4C4E2;padding:36px 0;margin-top:40px;font-size:14px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:16px 32px;justify-content:space-between;align-items:center}
+footer a{color:#EAF2FF}
+.disc{max-width:70ch}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<header class="nav"><div class="wrap"><div class="nav-in">
+  <a href="/" aria-label="Vitaegis home"><img src="logo.png" alt="Vitaegis"></a>
+  <nav class="nav-links" aria-label="Sections">
+    <a href="#map">Map</a><a href="#standards">Standards</a><a href="#deadlines">Deadlines</a><a href="#path">Launch path</a>
+  </nav>
+  <a class="pill pill-p" href="/">vitaegis.tech</a>
+</div></div></header>
+
+<main>
+<section class="hero"><div class="wrap">
+  <p class="eyebrow">Health tech regulatory map</p>
+  <h1>Every rule between your idea and <span>the market</span></h1>
+  <p class="lead">Tell the map what you are building. It lights up the laws, regulators, standards and deadlines that apply to you in Spain, the European Union, the United States and the rest of the world. Click any rule to see what it asks of you.</p>
+  <span class="asof"><i></i>Up to date as of 25 October 2026</span>
+</div></section>
+
+<section aria-labelledby="b-h"><div class="wrap">
+  <div class="builder">
+    <h2 id="b-h">What are you building?</h2>
+    <p class="sub">Your intended purpose decides which rulebook applies. Change any answer and the map updates.</p>
+    <div class="qgrid">
+      <div class="q">
+        <h3>1 · Purpose</h3>
+        <div class="seg" role="group" aria-label="Product purpose" id="purpose">
+          <button data-v="wellness" aria-pressed="false"><b>Wellness</b><small>No medical claims</small></button>
+          <button data-v="device" aria-pressed="true"><b>Medical device</b><small>Diagnose, monitor, treat</small></button>
+          <button data-v="ivd" aria-pressed="false"><b>Diagnostic test</b><small>Tests body samples (IVD)</small></button>
+        </div>
+      </div>
+      <div class="q">
+        <h3>2 · Your product</h3>
+        <div class="toggles" id="flags">
+          <button class="tg" data-f="ai" aria-pressed="false"><span>Uses AI or machine learning</span><i></i></button>
+          <button class="tg" data-f="hardware" aria-pressed="false"><span>Has hardware or a connected device</span><i></i></button>
+          <button class="tg" data-f="care" aria-pressed="false"><span>Clinicians deliver care through it</span><i></i></button>
+          <button class="tg" data-f="buyers" aria-pressed="false"><span>Sold to hospitals or public health</span><i></i></button>
+        </div>
+      </div>
+      <div class="q">
+        <h3>3 · Markets</h3>
+        <div class="mk" id="markets"></div>
+        <p class="sub" style="margin-top:14px;font-size:13.5px">Suggested order from Spain: CE marking first, then the US, then MDSAP markets.</p>
+      </div>
+    </div>
+    <div class="result" aria-live="polite">
+      <div><div class="big" id="r-count">0</div><div class="lbl">rules apply to you</div></div>
+      <div><div class="big" id="r-std">0</div><div class="lbl">core standards</div></div>
+      <div class="next" id="r-next"></div>
+    </div>
+  </div>
+</div></section>
+
+<section class="sec" id="map"><div class="wrap">
+  <div class="sec-h">
+    <div><h2>The map</h2><p>Rows are areas of law, columns are markets. Bright cards apply to your product; faded ones do not.</p></div>
+    <div style="display:grid;gap:10px;justify-items:end">
+      <div class="legend"><span><i style="background:rgba(201,138,18,.5)"></i>Coming or changing</span><span><i style="background:rgba(240,72,91,.45)"></i>Has a deadline</span><span><i style="background:rgba(31,184,119,.5)"></i>In force</span></div>
+      <label class="showall"><input type="checkbox" id="hideoff"> Hide rules that don't apply</label>
+    </div>
+  </div>
+  <div class="mtabs" role="tablist" id="mtabs" aria-label="Market"></div>
+  <div class="mapgrid" id="grid"></div>
+</div></section>
+
+<section class="sec" id="standards" style="background:var(--bg-soft)"><div class="wrap">
+  <div class="sec-h"><div><h2>Standards that work everywhere</h2><p>Spain, the EU, the US and most other regulators accept the same international standards as proof you meet their rules. Build on them once.</p></div></div>
+  <div class="stds" id="stds"></div>
+</div></section>
+
+<section class="sec" id="deadlines"><div class="wrap">
+  <div class="sec-h"><div><h2>Deadlines</h2><p>Dates that change what you must do, from 2025 to 2031. Faded dates don't apply to your profile. Click one to open the rule.</p></div></div>
+  <div class="tl" id="tl"></div>
+</div></section>
+
+<section class="sec" id="path" style="background:var(--bg-soft)"><div class="wrap">
+  <div class="sec-h">
+    <div><h2>Launch path</h2><p>Tick steps off as you go; your progress stays in this browser. Steps that don't fit your profile are hidden.</p></div>
+    <button class="reset" id="reset">Clear my ticks</button>
+  </div>
+  <div class="path" id="stages"></div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <p class="disc">General information as of 25 October 2026, not legal advice. Several rules are still changing (EU MDR/IVDR reform, Spain's Digital Health Law and AI law). Confirm your case with a regulatory consultant and a lawyer before you file or launch.</p>
+  <a href="/">← Back to vitaegis.tech</a>
+</div></footer>
+
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="dr-title" aria-hidden="true">
+  <div class="dr-top">
+    <button class="x" id="dr-x" aria-label="Close">×</button>
+    <div class="dr-meta" id="dr-meta"></div>
+    <h2 id="dr-title"></h2>
+    <p id="dr-sum"></p>
+  </div>
+  <div class="dr-body" id="dr-body"></div>
+</aside>
+
+<script>
+(function(){
+"use strict";
+var TODAY = "2026-10-25";
+
+var MARKETS = [
+  {id:"es", name:"Spain", sub:"AEMPS · AEPD · AESIA", c:"var(--es)"},
+  {id:"eu", name:"European Union", sub:"MDR · GDPR · AI Act", c:"var(--eu)"},
+  {id:"us", name:"United States", sub:"FDA · HHS · FTC · CMS", c:"var(--us)"},
+  {id:"gl", name:"Global", sub:"UK · MDSAP · other markets", c:"var(--gl)"}
+];
+var DOMAINS = [
+  {id:"product", name:"Product approval", sub:"Is it a device? How do you get it on the market?"},
+  {id:"data", name:"Data & privacy", sub:"Health data, consent, sharing"},
+  {id:"ai", name:"Artificial intelligence", sub:"AI-specific duties"},
+  {id:"cyber", name:"Cybersecurity", sub:"Product and organisation security"},
+  {id:"care", name:"Care delivery", sub:"Telehealth, clinicians, licensing"},
+  {id:"market", name:"Selling & getting paid", sub:"Buyers, reimbursement, liability"},
+  {id:"company", name:"Company & funding", sub:"Setup, incentives, grants"}
+];
+
+/* w = tags that make a rule apply; "a+b" means both must hold. Tags: all, wellness, device, ivd, medical, ai, hardware, care, buyers */
+var R = [
+/* ---------- SPAIN ---------- */
+{id:"rd192", m:"es", d:"product", t:"Real Decreto 192/2023", s:"Spain's rules on top of the EU MDR", w:["device"], st:"ok",
+ sum:"The Spanish complement to the EU Medical Device Regulation, enforced by AEMPS.",
+ dos:["Get an AEMPS activity licence (licencia previa de funcionamiento) if you manufacture, import, group or sterilise devices in Spain, including contract manufacturing for others.","Class I manufacturers established in Spain notify AEMPS when they place devices on the market (free, immediate).","Register as an economic operator in RECOPS and list each product by its UDI-DI, with labelling and IFU.","Labelling and instructions for use must be at least in Spanish (for software: the interface and IFU).","Clinical investigations need AEMPS authorisation plus a favourable opinion from an ethics committee (CEIm).","Advertising devices to the public is restricted; check your autonomous community's rules first."],
+ dates:[], src:[["BOE: Real Decreto 192/2023","https://www.boe.es/buscar/act.php?id=BOE-A-2023-7416"],["AEMPS: obligations of economic operators","https://www.aemps.gob.es/productos-sanitarios/productos-sanitarios/comercializacion-de-productos-sanitarios-en-espana/cuales-son-las-obligaciones-y-requisitos-para-los-agentes-economicos-en-espana/"]], rel:["mdr","recops","eudamed"]},
+{id:"rd942", m:"es", d:"product", t:"Real Decreto 942/2025", s:"Spain's rules on top of the EU IVDR", w:["ivd"], st:"ok",
+ sum:"Adopted 21 October 2025, it does for in-vitro diagnostics what RD 192/2023 does for devices.",
+ dos:["AEMPS licence for manufacturing IVDs in Spain, including complete manufacture for third parties.","Every IVD sold in Spain, whatever its class, goes into the RECOPS marketing register.","Spanish-language labelling and IFU."],
+ dates:[], src:[["AEMPS: marketing IVDs in Spain","https://www.aemps.gob.es/productos-sanitarios/comercializacion-y-puesta-en-servicio-en-espana-de-productos-sanitarios-y-productos-sanitarios-de-diagnostico-in-vitro/"]], rel:["ivdr","recops"]},
+{id:"recops", m:"es", d:"market", t:"RECOPS register", s:"Declare each product you sell in Spain", w:["medical"], st:"ok",
+ sum:"AEMPS's marketing register: every economic operator selling non-custom devices or IVDs in Spain must be listed, with each product.",
+ dos:["Register your company as an operator.","List each product by its UDI-DI (downloaded from EUDAMED), the date you start selling in Spain, and attach labelling and IFU.","Pharmacies and shops selling only to the public are exempt.","AEMPS still describes the older CCPS notification for class IIa, IIb and III devices during the transition; check which applies to you."],
+ dates:[], src:[["AEMPS: RECOPS","https://www.aemps.gob.es/productos-sanitarios/registros-nacionales-de-productos-recops-rps/registro-de-comercializacion-de-productos-sanitarios-recops/"]], rel:["rd192","eudamed"]},
+{id:"lopdgdd", m:"es", d:"data", t:"LOPDGDD (Ley Orgánica 3/2018)", s:"Spain's data protection law alongside GDPR", w:["all"], st:"ok",
+ sum:"Applies GDPR in Spain and adds national rules, including on health research. Supervised by the AEPD.",
+ dos:["Treat health data as a special category: you need a GDPR Article 6 legal basis and an Article 9 exception.","Use the 17th additional provision for health research (pseudonymised reuse, ethics committee).","Respect patient-rights law (Ley 41/2002) on consent and clinical records when you support care.","Appoint a DPO if health data processing is your core activity at scale."],
+ dates:[], src:[["AEPD","https://www.aepd.es/"]], rel:["gdpr","lsd"]},
+{id:"lsd", m:"es", d:"data", t:"Ley de Salud Digital", s:"Spain's coming digital health law", w:["all"], st:"up",
+ sum:"Draft law to implement the European Health Data Space in Spain and regulate digital technologies in care.",
+ dos:["Public consultation closed 20 October 2025; a draft was expected during 2026.","Will create regional and national bodies that authorise secondary use of health data.","Will connect Spain to MyHealth@EU and HealthData@EU.","Track it: it will shape how you access SNS data and integrate with public health records."],
+ dates:[["2025-10-20","Public consultation closed"]], src:[["Uría Menéndez: consultation summary","https://www.uria.com/es/publicaciones/9508-principales-novedades-de-la-consulta-publica-sobre-el-anteproyecto-de-ley-de-sal"],["Cuatrecasas: Digital Health Law","https://www.cuatrecasas.com/en/spain/life-sciences-healthcare/art/digital-health-law"]], rel:["ehds","lopdgdd"]},
+{id:"esai", m:"es", d:"ai", t:"Spanish AI law (AESIA)", s:"National enforcement of the EU AI Act", w:["ai"], st:"up",
+ sum:"The draft Organic Law on the proper use and governance of AI, approved by the Government on 26 May 2026, is in Parliament.",
+ dos:["AESIA becomes the main AI supervisor and single point of contact.","AI built into regulated products such as medical devices stays with the sector regulator (AEMPS and notified bodies).","Fines up to €35M or 7% of turnover for the most serious breaches.","AESIA runs the national AI regulatory sandbox: a route to test high-risk AI with the regulator."],
+ dates:[["2026-05-26","Bill approved by the Government"]], src:[["Ministry press release (PDF)","https://digital.gob.es/content/dam/portal-mtdfp/comunicacion/comunicacion_ministro/2026/05/2026-05-26/260526%20NP%20CMin%20APL%20IA.pdf"],["DLA Piper summary","https://www.jdsupra.com/legalnews/spain-government-approves-the-draft-1400885/"]], rel:["aiact"]},
+{id:"ens", m:"es", d:"cyber", t:"Esquema Nacional de Seguridad", s:"Security baseline for public-sector suppliers", w:["buyers"], st:"ok",
+ sum:"Royal Decree 311/2022. Selling software or cloud services to the SNS or regional health services usually requires ENS conformity.",
+ dos:["Determine your ENS category (basic, medium, high) with the buyer.","Get an ENS conformity certificate or declaration as required.","Pair it with a data processing agreement under GDPR Article 28."],
+ dates:[], src:[["CCN: ENS","https://ens.ccn.cni.es/"]], rel:["procure"]},
+{id:"centres", m:"es", d:"care", t:"Healthcare-centre authorisation", s:"If your staff deliver care", w:["care"], st:"ok",
+ sum:"Under Real Decreto 1277/2003, a company that provides healthcare services is a healthcare centre or service and needs regional authorisation and registration.",
+ dos:["Apply to your autonomous community (in Valencia: Conselleria de Sanitat).","Clinicians must be registered with their professional college and insured, including for remote practice.","Some regions now set telemedicine requirements (for example Madrid's 2025 draft decree)."],
+ dates:[], src:[["Comunidad de Madrid: new centres decree","https://www.comunidad.madrid/node/89587"]], rel:["telemed"]},
+{id:"telemed", m:"es", d:"care", t:"Telemedicine in Spain", s:"No specific law yet", w:["care"], st:"ok",
+ sum:"Remote care follows the medical code of ethics, patient-safety rules and data protection; there is no dedicated national telemedicine law.",
+ dos:["Agree remote consultation with the patient and record the channel used in the clinical record.","Use secure, private communication tools under a data processing agreement.","Check your professional liability insurance covers remote care."],
+ dates:[], src:[["Redacción Médica: telemedicine and liability","https://www.redaccionmedica.com/opinion/20200527/telemedicina-responsabilidad/10496_13.html"]], rel:["centres","lsd"]},
+{id:"procure", m:"es", d:"market", t:"Selling to the public health system", s:"SNS, regional services, innovation procurement", w:["buyers"], st:"ok",
+ sum:"Public buyers purchase through tenders; Compra Pública de Innovación lets them fund solutions that don't exist yet.",
+ dos:["Expect pilots before contracts, plus security (ENS) and data protection questionnaires.","Look for innovation procurement calls from regional health services.","Build health-economic evidence: public buyers want cost and outcome data."],
+ dates:[], src:[], rel:["ens"]},
+{id:"startup", m:"es", d:"company", t:"Ley de Startups + ENISA", s:"Tax and legal perks for certified startups", w:["all"], st:"ok",
+ sum:"Ley 28/2022 gives certified startups a reduced corporate tax rate, better stock-option treatment, investor deductions and other advantages. Certification by ENISA is free and online.",
+ dos:["Check eligibility: young company, turnover under €10M, based in Spain, innovative and scalable.","Apply for ENISA certification before claiming the benefits.","Ask your tax adviser to confirm current figures (15% corporate tax for early profitable years, stock options, angel deductions).","Startups are exempt from the net-equity dissolution rule for their first three years."],
+ dates:[], src:[["La Moncloa: Ley de Startups","https://www.lamoncloa.gob.es/serviciosdeprensa/notasprensa/transformacion-digital-y-funcion-publica/Paginas/2024/ley-startup-emprendimiento.aspx"],["ENISA","https://www.enisa.es/"]], rel:["funding"]},
+{id:"funding", m:"es", d:"company", t:"Public funding in Spain", s:"NEOTEC, ENISA, CDTI, regional", w:["all"], st:"ok",
+ sum:"Non-dilutive money for early health tech.",
+ dos:["CDTI NEOTEC: grant up to 70% of the business plan, max €250k (85% and €325k if you hire PhDs). The 2026 call (€20.38M) ran 14 April to 14 May 2026. Company under 3 years with €20k paid-in capital.","ENISA participative loans: no equity taken.","CDTI–ISCIII and other CDTI R&D lines for health.","Valencia: AVI (Agència Valenciana de la Innovació) and IVACE calls."],
+ dates:[["2026-05-14","NEOTEC 2026 call closed"]], src:[["CDTI: NEOTEC 2026","https://www.cdti.es/ayudas/ayudas-neotec-2026"],["MICIU: NEOTEC 2026 announcement","https://www.ciencia.gob.es/ca/Noticias/2026/abril/MICIU-lanza-convocatoria-NEOTEC-2026.html"]], rel:["startup","eic"]},
+
+/* ---------- EU ---------- */
+{id:"mdr", m:"eu", d:"product", t:"Medical Device Regulation", s:"(EU) 2017/745 — CE marking for devices", w:["device"], st:"up",
+ sum:"The core EU law for medical devices, including software with a medical purpose. A targeted revision was proposed on 16 December 2025.",
+ dos:["Qualify and classify your product (MDCG 2019-11 for software). Under Rule 11, decision-support software is at least class IIa.","Class IIa and above need a notified body; book one early.","Run an ISO 13485 QMS, ISO 14971 risk management, clinical evaluation, technical documentation (Annexes II and III).","Name a Person Responsible for Regulatory Compliance (small firms can use an external one).","Post-market surveillance, vigilance, UDI and EUDAMED registration.","Non-EU companies need an EU authorised representative."],
+ dates:[["2025-12-16","Commission proposes targeted MDR/IVDR revision"],["2027-12-31","Legacy higher-risk devices must be MDR-certified"],["2028-12-31","Legacy lower-risk devices must be MDR-certified"]],
+ src:[["European Commission: medical devices","https://health.ec.europa.eu/medical-devices-sector_en"],["MDCG guidance","https://health.ec.europa.eu/medical-devices-sector/new-regulations/guidance-mdcg-endorsed-documents-and-other-guidance_en"],["A&O Shearman: revision proposal","https://www.aoshearman.com/en/insights/ao-shearman-on-life-sciences/eu-commission-proposes-much-anticipated-mdr-and-ivdr-revision"]], rel:["rd192","eudamed","mdrcyber","aiact"]},
+{id:"ivdr", m:"eu", d:"product", t:"IVD Regulation", s:"(EU) 2017/746 — tests on body samples", w:["ivd"], st:"dl",
+ sum:"Covers in-vitro diagnostics: lab tests, home tests and diagnostic software for them. Classes A to D; B, C and D need a notified body.",
+ dos:["Classify under the IVDR rules; most diagnostics land in class B or above.","Performance evaluation: scientific validity, analytical and clinical performance.","ISO 13485 QMS, technical documentation, post-market performance follow-up."],
+ dates:[["2027-12-31","Legacy class D IVDs must comply"],["2028-12-31","Legacy class C IVDs must comply"],["2029-12-31","Legacy class B and sterile class A IVDs must comply"]],
+ src:[["QbD Group: IVDR timelines","https://qbdgroup.com/en/regulatory-updates/eu-council-endorses-proposal-to-amend-ivdr-and-mdr-regulations"]], rel:["rd942","eudamed"]},
+{id:"eudamed", m:"eu", d:"product", t:"EUDAMED", s:"EU device database, now mandatory", w:["medical"], st:"dl",
+ sum:"Four modules became mandatory on 28 May 2026: actor registration, UDI/device registration, notified bodies and certificates, market surveillance.",
+ dos:["Register as an actor to get your Single Registration Number (SRN) before registering any device.","Register new devices before placing them on the market.","Register devices already on the market by 27 November 2026."],
+ dates:[["2026-05-28","Four EUDAMED modules mandatory"],["2026-11-27","Deadline to register devices already on the market"]],
+ src:[["NSF: EUDAMED mandatory modules","https://www.nsf.org/life-science-regulatory-news/eudamed-milestone-mandatory-modules-from-28-may-2026"]], rel:["mdr","ivdr","recops"]},
+{id:"gpsr", m:"eu", d:"product", t:"General Product Safety Regulation", s:"(EU) 2023/988 — non-medical consumer products", w:["wellness+hardware"], st:"ok",
+ sum:"Applies since 13 December 2024 to consumer products not covered by sector law, such as wellness gadgets.",
+ dos:["Risk assessment and technical documentation.","Product identification, manufacturer contact details, safety information.","Accident reporting via the Safety Business Gateway; recalls when needed.","Also check RoHS, WEEE, the Batteries Regulation and, for wireless products, the Radio Equipment Directive."],
+ dates:[], src:[], rel:["cra"]},
+{id:"gdpr", m:"eu", d:"data", t:"GDPR", s:"(EU) 2016/679 — personal and health data", w:["all"], st:"ok",
+ sum:"Health data is a special category: you need both a lawful basis and an Article 9 exception.",
+ dos:["Choose an Article 6 basis and an Article 9 exception (explicit consent, healthcare provision, public health or scientific research).","Do a DPIA for large-scale health data processing (Article 35).","Appoint a DPO if large-scale health data processing is your core activity (Article 37).","Sign data processing agreements with every processor; check transfers outside the EU (EU–US Data Privacy Framework or SCCs).","Report breaches to the authority within 72 hours."],
+ dates:[], src:[["EUR-Lex: GDPR","https://eur-lex.europa.eu/eli/reg/2016/679/oj"]], rel:["lopdgdd","ehds"]},
+{id:"ehds", m:"eu", d:"data", t:"European Health Data Space", s:"(EU) 2025/327 — health data access and reuse", w:["all"], st:"up",
+ sum:"In force since 26 March 2025. Gives patients control of their records, sets rules for EHR systems and wellness apps that connect to them, and opens health data for secondary use.",
+ dos:["EHR system makers: meet EU interoperability and logging requirements and self-certify.","Wellness apps that claim interoperability with EHR systems must carry an EU label and be registered.","Researchers and companies can request health data through national health data access bodies.","Data holders may have to share data they hold; check whether your size exempts you."],
+ dates:[["2025-03-26","EHDS enters into force"],["2027-03-26","Most EHDS rules apply"],["2029-03-26","EHR and wellness-label duties for the first data categories"],["2031-03-26","Duties extend to the remaining data categories"]],
+ src:[["Heuking: EHDS published","https://www.heuking.de/en/news-events/newsletter-articles/detail/eu-regulation-on-the-european-health-data-space-ehds-published.html"],["Belgian HDA: EHDS timeline","https://academy.hda.belgium.be/mod/resource/view.php?id=283"],["Johner Institute: EHDS for manufacturers","https://blog.johner-institute.com/?p=13349"]], rel:["lsd","gdpr"]},
+{id:"dataact", m:"eu", d:"data", t:"Data Act", s:"(EU) 2023/2854 — data from connected products", w:["hardware"], st:"ok",
+ sum:"Applies since 12 September 2025. Users of connected products such as wearables can access and share the data the product generates.",
+ dos:["Tell users before purchase what data the product generates and how to access it.","Give users (and third parties they choose) access to that data.","Design new products so data is accessible by default."],
+ dates:[], src:[], rel:["gdpr"]},
+{id:"aiact", m:"eu", d:"ai", t:"AI Act", s:"(EU) 2024/1689 — medical AI is high-risk", w:["ai"], st:"up",
+ sum:"AI that is, or is a safety component of, a medical device needing a notified body is high-risk. The Digital Omnibus agreement of 7 May 2026 moved those obligations to 2 August 2028.",
+ dos:["Already in force: banned practices and AI literacy (Feb 2025), general-purpose AI model rules (Aug 2025).","Tell users when they talk to an AI system; mark AI-generated content.","For high-risk medical AI: risk management, data governance and bias testing, logging, transparency, human oversight, accuracy and robustness.","One notified-body assessment will cover MDR and AI Act; build these into your QMS now."],
+ dates:[["2026-08-02","AI transparency duties apply"],["2026-12-02","Watermarking of AI-generated content"],["2027-12-02","Stand-alone high-risk AI rules (Annex III)"],["2028-08-02","High-risk rules for AI in medical devices (Annex I)"]],
+ src:[["Hogan Lovells: Omnibus delay","https://www.jdsupra.com/legalnews/eu-legislators-agree-to-delay-for-high-5617765/"],["Gibson Dunn: Omnibus agreement","https://www.gibsondunn.com/eu-ai-act-omnibus-agreement-postponed-high-risk-deadlines-and-other-key-changes/"]], rel:["esai","pccp","gmlp"]},
+{id:"mdrcyber", m:"eu", d:"cyber", t:"MDR cybersecurity", s:"Annex I §17 + MDCG 2019-16", w:["medical"], st:"ok",
+ sum:"For medical devices, cybersecurity is part of the general safety and performance requirements. The Cyber Resilience Act does not apply to MDR-regulated devices.",
+ dos:["Secure development life cycle (IEC 81001-5-1), threat modelling, penetration testing.","Minimum IT requirements for users, SBOM, patching plan for the device lifetime.","Report serious incidents, including security-caused ones, through vigilance."],
+ dates:[], src:[["Stephenson Harwood: cyber laws in life sciences","https://www.stephensonharwood.com/media/rvzlh4s5/stephenson-harwood-cyber-security-laws-life-science-september-2026-alert.pdf"]], rel:["mdr","nis2"]},
+{id:"cra", m:"eu", d:"cyber", t:"Cyber Resilience Act", s:"(EU) 2024/2847 — connected non-medical products", w:["wellness+hardware"], st:"dl",
+ sum:"Horizontal cybersecurity law for products with digital elements, such as wellness wearables and their apps. Medical devices are excluded.",
+ dos:["Security by design, no known exploitable vulnerabilities at launch.","SBOM, vulnerability handling and free security updates for the support period.","Report actively exploited vulnerabilities and severe incidents."],
+ dates:[["2026-09-11","CRA vulnerability reporting starts"],["2027-12-11","CRA fully applies"]],
+ src:[["Stephenson Harwood: cyber laws in life sciences","https://www.stephensonharwood.com/media/rvzlh4s5/stephenson-harwood-cyber-security-laws-life-science-september-2026-alert.pdf"]], rel:["gpsr","mdrcyber"]},
+{id:"nis2", m:"eu", d:"cyber", t:"NIS2 Directive", s:"(EU) 2022/2555 — organisation security", w:["medical","care"], st:"ok",
+ sum:"Covers healthcare providers and medical device manufacturers above the medium-size threshold, with personal liability for management.",
+ dos:["Check whether you pass the size threshold (generally 50+ staff or over €10M turnover).","Risk-management measures, supply-chain security, incident reporting to the national CSIRT.","Check your country's transposition law."],
+ dates:[], src:[], rel:["mdrcyber"]},
+{id:"pld", m:"eu", d:"market", t:"Product Liability Directive", s:"(EU) 2024/2853 — software is now a product", w:["all"], st:"dl",
+ sum:"Strict liability now covers software, including stand-alone apps and AI. Missing security updates can make a product defective.",
+ dos:["Applies to products placed on the market after 9 December 2026.","Keep products updated and documented; liability can follow later software changes.","Review your product liability insurance."],
+ dates:[["2026-12-09","New product liability rules apply"]], src:[["Mills & Reeve: product liability","https://www.mfmac.com/insights/healthcare-lifesciences/medical-devices-and-product-liability-manufacturers-get-ready/"]], rel:["mdr"]},
+{id:"reimb", m:"eu", d:"market", t:"National reimbursement routes", s:"DiGA, PECAN, mHealth pyramid, HTA", w:["medical"], st:"ok",
+ sum:"There is no EU-wide reimbursement. Some countries have fast tracks for digital medical devices.",
+ dos:["Germany DiGA: fast-track listing for low-risk digital apps prescribed by doctors.","France PECAN: early coverage for digital medical devices.","Belgium: mHealth validation pyramid.","High-risk devices may face EU joint clinical assessment under the HTA Regulation 2021/2282."],
+ dates:[], src:[], rel:["mdr"]},
+{id:"eic", m:"eu", d:"company", t:"EU funding", s:"EIC, Horizon Europe, EIT Health", w:["all"], st:"ok",
+ sum:"Grants and equity for deep tech and health innovation.",
+ dos:["EIC Accelerator: grant plus optional equity for scale-up.","EIC Pathfinder and Transition for earlier research.","Horizon Europe and EU4Health calls (often need an institutional partner).","EIT Health accelerator programmes."],
+ dates:[], src:[], rel:["funding"]},
+
+/* ---------- US ---------- */
+{id:"fda", m:"us", d:"product", t:"FDA device pathways", s:"510(k), De Novo, PMA, Breakthrough", w:["medical"], st:"ok",
+ sum:"FDA classifies devices I to III. The pathway depends on risk and whether a predicate device exists.",
+ dos:["Exempt: most class I and some class II (registration, listing, QMS, labelling).","510(k): class II with a predicate; show substantial equivalence.","De Novo: novel low or moderate risk, no predicate.","PMA: class III, usually needs clinical trials.","Breakthrough Devices Program: priority interaction for serious conditions.","Hold a free Pre-Submission (Q-Sub) meeting before filing. Foreign firms need a US agent.","Significant-risk studies need an IDE (21 CFR 812) and IRB approval."],
+ dates:[], src:[["FDA Digital Health Center of Excellence","https://www.fda.gov/medical-devices/digital-health-center-excellence"]], rel:["qmsr","sw524","cdsw"]},
+{id:"cdsw", m:"us", d:"product", t:"Wellness & CDS guidance", s:"Updated 6 January 2026", w:["wellness","device","ai"], st:"ok",
+ sum:"FDA replaced its General Wellness and Clinical Decision Support guidances, widening what falls outside device rules.",
+ dos:["Some non-invasive wearable sensors (for example optical blood pressure or SpO2 estimates) can be wellness products if they make no clinical claims.","CDS outside the device definition must give clinicians clear documentation of how it works.","FDA withdrew its guidance adopting IMDRF SaMD clinical-evaluation principles.","Keep validation data even if exempt: the FTC and states still police accuracy claims."],
+ dates:[["2026-01-06","FDA updates wellness and CDS guidance"]],
+ src:[["King & Spalding","https://www.kslaw.com/insights/articles/fda-updates-general-wellness-and-clinical-decision-support-guidance-documents"],["Faegre Drinker","https://faegredrinker.com/en/insights/publications/2026/1/key-updates-in-fdas-2026-general-wellness-and-clinical-decision-support-software-guidance"],["Ropes & Gray","https://www.ropesgray.com/en/insights/alerts/2026/01/fda-adapts-with-the-times-on-digital-health-updated-guidances-on-general-wellness-products"]], rel:["fda","ftc"]},
+{id:"qmsr", m:"us", d:"product", t:"QMSR (21 CFR 820)", s:"ISO 13485 is now US law", w:["medical"], st:"ok",
+ sum:"Since 2 February 2026, FDA's quality rule incorporates ISO 13485:2016 by reference and inspects under a new compliance programme.",
+ dos:["One ISO 13485 QMS can serve the EU and US.","An ISO 13485 certificate does not replace FDA inspection.","MDSAP audits can replace routine FDA inspections."],
+ dates:[["2026-02-02","FDA QMSR takes effect"]], src:[["FDA: QMSR","https://www.fda.gov/quality-systems-regulation"]], rel:["fda","mdsap"]},
+{id:"ldt", m:"us", d:"product", t:"Lab tests: FDA and CLIA", s:"Diagnostics in the US", w:["ivd"], st:"ok",
+ sum:"Commercial IVD kits go through FDA. FDA's 2024 rule on lab-developed tests was vacated by a federal court in 2025, so LDTs remain under CLIA.",
+ dos:["Kits sold to labs or consumers: FDA 510(k), De Novo or PMA.","Tests developed and run in one lab: CLIA certification of the lab.","Home-use tests need extra usability evidence."],
+ dates:[], src:[], rel:["fda"]},
+{id:"hipaa", m:"us", d:"data", t:"HIPAA", s:"If providers or insurers are your customers", w:["buyers","care"], st:"up",
+ sum:"Covers providers, health plans and clearinghouses, and their business associates. Selling to a hospital or clinic usually makes you a business associate.",
+ dos:["Sign a Business Associate Agreement; run a security risk analysis.","Meet the Privacy, Security and Breach Notification Rules (notify within 60 days; HHS for 500+ people).","OCR expects encryption and MFA in practice.","The Security Rule overhaul proposed in January 2025 is not final; final action is projected for July 2027.","Health IT developers connecting to EHRs must respect information-blocking rules."],
+ dates:[["2026-02-16","42 CFR Part 2 (substance use records) compliance date"],["2027-07-01","Projected final HIPAA Security Rule update",true]],
+ src:[["HHS: HIPAA","https://www.hhs.gov/hipaa/"],["Holland & Knight: Security Rule to July 2027","https://www.hklaw.com/en/insights/publications/2026/07/hipaa-security-rule-amendments-now-projected-for-july-2027"]], rel:["ftc","states"]},
+{id:"ftc", m:"us", d:"data", t:"FTC rules", s:"Section 5 + Health Breach Notification Rule", w:["all"], st:"ok",
+ sum:"The FTC polices health claims and consumer health data outside HIPAA.",
+ dos:["Health claims need competent and reliable scientific evidence.","Do not share health data with advertisers without clear, affirmative consent.","The 2024 Health Breach Notification Rule covers health apps and connected devices: notify users, the FTC and sometimes media after a breach.","On 9 September 2026 the FTC withdrew its 2021 policy statement as superseded by that rule; the rule still applies."],
+ dates:[], src:[["FTC: health privacy","https://www.ftc.gov/business-guidance/privacy-security/health-privacy"],["HIPAA Journal: policy statement rescinded","https://www.hipaajournal.com/ftc-rescinds-policy-statement-health-app-data-breaches/"]], rel:["states","hipaa"]},
+{id:"states", m:"us", d:"data", t:"State health privacy laws", s:"Washington MHMDA and others", w:["all"], st:"ok",
+ sum:"States fill gaps HIPAA leaves. Washington's My Health My Data Act is the strictest, with a private right of action.",
+ dos:["Get consent before collecting consumer health data from Washington residents; separate consent to share it.","Nevada and Connecticut have similar rules; California and most state privacy laws treat health data as sensitive.","DOJ's bulk sensitive data rule (28 CFR 202) restricts giving bulk US health or genomic data to countries of concern."],
+ dates:[], src:[], rel:["ftc"]},
+{id:"pccp", m:"us", d:"ai", t:"AI-enabled devices & PCCP", s:"Plan model updates up front", w:["ai+medical"], st:"ok",
+ sum:"A Predetermined Change Control Plan lets you pre-authorise future model changes without a new submission each time.",
+ dos:["Describe planned modifications, the validation protocol and the impact assessment.","Document training, tuning and test data separately.","Monitor real-world performance after launch."],
+ dates:[], src:[["King & Spalding: final PCCP guidance","https://www.kslaw.com/insights/articles/fda-publishes-final-predetermined-change-control-plan-guidance-for-ai-enabled-device-software-functions"]], rel:["aiact","gmlp"]},
+{id:"sw524", m:"us", d:"cyber", t:"Section 524B cyber devices", s:"Security in every FDA submission", w:["medical+hardware","ai+medical","device"], st:"ok",
+ sum:"Devices with software that connect to the internet are \"cyber devices\" and must show security in their premarket submission.",
+ dos:["Submit an SBOM.","Show a plan to monitor, find and fix vulnerabilities, including coordinated disclosure.","Show secure-by-design development and testing."],
+ dates:[], src:[], rel:["fda","mdrcyber"]},
+{id:"license", m:"us", d:"care", t:"Licensing & practice rules", s:"State licensure, CPOM, Ryan Haight, Anti-Kickback", w:["care"], st:"ok",
+ sum:"Care delivery in the US is regulated state by state.",
+ dos:["Clinicians must be licensed in the patient's state; compacts (IMLC, PSYPACT, Nurse Licensure Compact) help.","Corporate practice of medicine laws (for example California, New York, Texas): use a physician-owned professional corporation plus a management services organisation.","Remote prescribing of controlled substances falls under the Ryan Haight Act and temporary DEA flexibilities; check current status.","Payments tied to federal-program referrals raise Anti-Kickback and Stark risk."],
+ dates:[], src:[], rel:["hipaa","cms"]},
+{id:"cms", m:"us", d:"market", t:"Medicare codes (CMS)", s:"RPM, RTM, digital mental health", w:["medical","care"], st:"ok",
+ sum:"Medicare pays through CPT/HCPCS codes in the annual Physician Fee Schedule.",
+ dos:["2026: new remote monitoring codes for 2 to 15 days of data in 30 days, and 10 minutes of monthly management.","Digital mental health treatment codes were proposed to cover FDA-authorised ADHD digital therapeutics.","Commercial payers often lag Medicare; plan employer, health-system or direct-to-consumer revenue too."],
+ dates:[], src:[["Foley: 2026 fee schedule","https://www.foley.com/?p=114631"],["Telehealth.org: commercial payers","https://telehealth.org/blog/medicare-telehealth-2026-what-cmss-new-proposal-means-for-behavioral-health/"]], rel:["license"]},
+{id:"sbir", m:"us", d:"company", t:"US non-dilutive funding", s:"NIH SBIR/STTR, ARPA-H", w:["all"], st:"ok",
+ sum:"US grant programmes for health innovation; most require a US entity.",
+ dos:["NIH SBIR/STTR phases I and II.","ARPA-H programme calls.","Consider a US subsidiary once you enter the US market."],
+ dates:[], src:[], rel:[]},
+
+/* ---------- GLOBAL ---------- */
+{id:"mhra", m:"gl", d:"product", t:"UK: MHRA", s:"CE recognition, UKCA, UK Responsible Person", w:["medical"], st:"up",
+ sum:"Great Britain accepts CE-marked devices on a transitional basis. In February 2026 the MHRA consulted on indefinite recognition of MDR/IVDR CE devices.",
+ dos:["Register devices with the MHRA and appoint a UK Responsible Person if you are outside the UK.","Meet UK post-market surveillance rules (in force since 2025).","UKCA is being repositioned as a route for first-in-market innovations, including AI devices.","Check the outcome of the consultation (closed 10 April 2026) before planning UK entry."],
+ dates:[["2026-04-10","MHRA CE-recognition consultation closed"]], src:[["Mills & Reeve: MHRA consultation","https://www.mills-reeve.com/blogs/life-sciences/march-2026/mhra-consultation-permanent-recognition-of-ce-marked-devices/"],["MHRA","https://www.gov.uk/government/organisations/medicines-and-healthcare-products-regulatory-agency"]], rel:["mdr","dtac"]},
+{id:"mdsap", m:"gl", d:"product", t:"MDSAP", s:"One audit, five markets", w:["medical"], st:"ok",
+ sum:"The Medical Device Single Audit Program lets one ISO 13485-based audit satisfy Australia, Brazil, Canada, Japan and the US.",
+ dos:["Required by Canada for class II and higher devices.","FDA accepts MDSAP reports instead of routine inspections.","Choose a notified body that is also an MDSAP auditing organisation and combine audits."],
+ dates:[], src:[["ANVISA: MDSAP","https://www.gov.br/anvisa/en/updates/anvisa-takes-part-in-the-mdsap-2026-forum"],["DEKRA: MDSAP","https://www.dekra.nl/en/mdsap/"]], rel:["qmsr","others"]},
+{id:"others", m:"gl", d:"product", t:"Other device markets", s:"Switzerland, Canada, Australia, Japan, Brazil, China, India, Gulf", w:["medical"], st:"ok",
+ sum:"Each needs a local representative or licence; several rely on CE or FDA evidence.",
+ dos:["Switzerland (Swissmedic): Swiss authorised representative; swissdamed registration.","Canada (Health Canada): establishment licence for class I; device licence plus MDSAP for II–IV.","Australia (TGA): Australian sponsor; ARTG entry; CE or FDA evidence supports approval.","Japan (PMDA): Japanese marketing authorisation holder.","Brazil (ANVISA): Brazilian registration holder; INMETRO for electrical equipment.","China (NMPA): local agent, often local testing and clinical data.","India (CDSCO): licence under the Medical Devices Rules 2017.","Saudi Arabia (SFDA): marketing authorisation, often relying on CE or FDA."],
+ dates:[], src:[], rel:["mdsap"]},
+{id:"privacy", m:"gl", d:"data", t:"Privacy laws worldwide", s:"UK GDPR, PIPEDA, LGPD, APPI, PIPL, DPDP", w:["all"], st:"ok",
+ sum:"Most markets have GDPR-like laws; some add data-localisation rules.",
+ dos:["UK: UK GDPR, Data Protection Act 2018, Data (Use and Access) Act 2025.","Canada: PIPEDA and Quebec Law 25. Brazil: LGPD. Japan: APPI. India: DPDP Act 2023.","China: PIPL plus data-localisation and export-security rules."],
+ dates:[], src:[], rel:["gdpr"]},
+{id:"gmlp", m:"gl", d:"ai", t:"Good Machine Learning Practice", s:"IMDRF, FDA, Health Canada, MHRA", w:["ai"], st:"ok",
+ sum:"Ten shared principles for AI medical devices that most regulators expect you to follow.",
+ dos:["Representative training data for the intended population.","Independent training and test sets.","Measure the performance of the human-AI team, not just the model.","Monitor deployed models and manage retraining risks.","WHO guidance on AI ethics shapes rules in many other markets."],
+ dates:[], src:[["IMDRF","https://www.imdrf.org/"]], rel:["aiact","pccp"]},
+{id:"dtac", m:"gl", d:"market", t:"UK: NHS DTAC + NICE", s:"Selling digital health to the NHS", w:["buyers"], st:"ok",
+ sum:"NHS buyers assess digital health technology with DTAC: clinical safety, data protection, technical security, interoperability, usability.",
+ dos:["A shorter DTAC form replaced the old one from 6 April 2026.","Clinical safety standards DCB0129 and DCB0160.","Data Security and Protection Toolkit.","Evidence against the NICE Evidence Standards Framework."],
+ dates:[["2026-04-06","New NHS DTAC form required"]], src:[["NHS England: DTAC","https://transform.england.nhs.uk/key-tools-and-info/digital-technology-assessment-criteria-dtac"]], rel:["mhra"]}
+];
+
+var STDS = [
+ {k:"ISO 13485", t:"Quality management system", w:["medical"]},
+ {k:"ISO 14971", t:"Risk management", w:["medical"]},
+ {k:"IEC 62304", t:"Software life cycle", w:["medical"]},
+ {k:"IEC 62366-1", t:"Usability engineering", w:["medical"]},
+ {k:"IEC 82304-1", t:"Health software as a product", w:["all"]},
+ {k:"IEC 81001-5-1", t:"Security across the software life cycle", w:["all"]},
+ {k:"IEC 60601-1", t:"Electrical safety and EMC for devices", w:["medical+hardware"]},
+ {k:"ISO 10993", t:"Biocompatibility for body contact", w:["medical+hardware"]},
+ {k:"ISO 14155", t:"Good clinical practice for device studies", w:["medical"]},
+ {k:"ISO 15223-1 / 20417", t:"Label symbols and information", w:["medical"]},
+ {k:"ISO/IEC 27001 (+27701)", t:"Information security and privacy management", w:["all"]},
+ {k:"ISO/IEC 42001", t:"AI management system", w:["ai"]},
+ {k:"HL7 FHIR · SNOMED CT · LOINC", t:"Interoperability and terminology", w:["buyers","care"]},
+ {k:"WCAG 2.2 / EN 301 549", t:"Accessibility", w:["all"]}
+];
+
+var STAGES = [
+ {t:"Idea & company", items:[
+   ["Write the intended purpose: user, patient, setting, medical claim",["all"]],
+   ["Draft a provisional classification (EU rules, FDA product code)",["medical"]],
+   ["Incorporate in Spain and apply for ENISA startup certification",["all"]],
+   ["Sign IP assignments with founders, contractors and universities",["all"]],
+   ["Pick target markets and the order of entry",["all"]]]},
+ {t:"Prototype", items:[
+   ["Start a lightweight ISO 13485 QMS with an ISO 14971 risk file",["medical"]],
+   ["Set up an IEC 62304 software process, SOUP list and SBOM",["medical"]],
+   ["Map data flows, pick GDPR legal bases, complete a DPIA",["all"]],
+   ["Name a PRRC and, if required, a DPO",["medical"]],
+   ["Apply for NEOTEC, ENISA, regional and EU funding",["all"]],
+   ["Keep a claims register so marketing stays non-medical",["wellness"]]]},
+ {t:"Pre-market", items:[
+   ["Pre-submission meeting with AEMPS or a notified body",["medical"]],
+   ["FDA Q-Sub meeting if the US is in scope",["medical"]],
+   ["Clinical evaluation plan; CEIm and AEMPS approval for studies",["medical"]],
+   ["Usability (IEC 62366-1) and security (IEC 81001-5-1) testing",["medical"]],
+   ["IEC 60601 electrical safety testing",["medical+hardware"]],
+   ["Technical documentation and post-market surveillance plan",["medical"]],
+   ["Notified-body application and audit",["medical"]],
+   ["AI readiness: data governance, logging, human oversight, change control",["ai"]],
+   ["CRA readiness: SBOM, vulnerability handling, update policy",["wellness+hardware"]],
+   ["Validate any measurement your wellness product displays",["wellness"]]]},
+ {t:"Launch", items:[
+   ["EU declaration of conformity and CE marking",["medical"]],
+   ["EUDAMED actor (SRN) and device registration; RECOPS in Spain",["medical"]],
+   ["Spanish-language labelling and IFU; claims reviewed",["medical"]],
+   ["DPAs, BAAs (US), terms, privacy notice, clinician agreements",["all"]],
+   ["Product liability and clinical trial insurance",["all"]],
+   ["Regional healthcare-centre authorisation for care services",["care"]]]},
+ {t:"Post-market", items:[
+   ["Complaint handling, vigilance and serious-incident reporting",["medical"]],
+   ["PMS report or PSUR, and post-market clinical follow-up",["medical"]],
+   ["Vulnerability monitoring and security updates",["all"]],
+   ["Change control for software and AI model updates",["all"]],
+   ["Track: MDR revision, Spanish Digital Health Law, AI Act 2028, EHDS",["all"]]]}
+];
+
+/* ---------- state ---------- */
+var S = {purpose:"device", ai:false, hardware:false, care:false, buyers:false, markets:{es:true,eu:true,us:true,gl:true}, tab:"es"};
+try{ var saved = JSON.parse(localStorage.getItem("vx-map-profile")||"null"); if(saved && typeof saved==="object"){ for(var k in saved){ if(k in S) S[k]=saved[k]; } } }catch(e){}
+var ticks = {};
+try{ ticks = JSON.parse(localStorage.getItem("vx-map-ticks")||"{}")||{}; }catch(e){ ticks={}; }
+function save(){ try{ localStorage.setItem("vx-map-profile", JSON.stringify(S)); }catch(e){} }
+function saveTicks(){ try{ localStorage.setItem("vx-map-ticks", JSON.stringify(ticks)); }catch(e){} }
+
+function active(){
+  var a = {all:1}; a[S.purpose]=1; if(S.purpose!=="wellness") a.medical=1;
+  ["ai","hardware","care","buyers"].forEach(function(f){ if(S[f]) a[f]=1; });
+  return a;
+}
+function applies(w){ var a=active(); return w.some(function(t){ return t.split("+").every(function(p){ return a[p]; }); }); }
+var byId = {}; R.forEach(function(r){ byId[r.id]=r; });
+function mk(id){ for(var i=0;i<MARKETS.length;i++) if(MARKETS[i].id===id) return MARKETS[i]; }
+function dm(id){ for(var i=0;i<DOMAINS.length;i++) if(DOMAINS[i].id===id) return DOMAINS[i]; }
+function esc(s){ return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c];}); }
+var MONTHS=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+function fmt(d,a){ var m=MONTHS[Number(d.slice(5,7))-1]+" "+d.slice(0,4); return a? "~"+m : Number(d.slice(8,10))+" "+m; }
+var STL = {ok:["ok","In force"], up:["up","Changing"], dl:["dl","Deadline"]};
+function nextDate(r){ var f=(r.dates||[]).filter(function(x){return x[0]>=TODAY;}).sort(); return f[0]; }
+
+/* ---------- builder ---------- */
+var $ = function(id){ return document.getElementById(id); };
+function renderBuilder(){
+  Array.prototype.forEach.call($("purpose").children,function(b){ b.setAttribute("aria-pressed", String(b.dataset.v===S.purpose)); });
+  Array.prototype.forEach.call($("flags").children,function(b){ b.setAttribute("aria-pressed", String(!!S[b.dataset.f])); });
+  $("markets").innerHTML = MARKETS.map(function(m){ return '<button data-m="'+m.id+'" aria-pressed="'+(!!S.markets[m.id])+'" style="--c:'+m.c+'"><i></i>'+esc(m.name)+'</button>'; }).join("");
+}
+$("purpose").addEventListener("click",function(e){ var b=e.target.closest("button"); if(!b) return; S.purpose=b.dataset.v; update(); });
+$("flags").addEventListener("click",function(e){ var b=e.target.closest("button"); if(!b) return; S[b.dataset.f]=!S[b.dataset.f]; update(); });
+$("markets").addEventListener("click",function(e){ var b=e.target.closest("button"); if(!b) return; var id=b.dataset.m; var on=Object.keys(S.markets).filter(function(k){return S.markets[k];}); if(S.markets[id] && on.length===1) return; S.markets[id]=!S.markets[id]; if(!S.markets[S.tab]) S.tab=MARKETS.filter(function(m){return S.markets[m.id];})[0].id; update(); });
+
+/* ---------- map ---------- */
+function shownMarkets(){ return MARKETS.filter(function(m){ return S.markets[m.id]; }); }
+function chip(r){
+  var on = applies(r.w), st=STL[r.st], nd=nextDate(r);
+  var tags = '<span class="tag '+st[0]+'">'+st[1]+'</span>' + (nd? '<span class="tag dl">'+fmt(nd[0],nd[2])+'</span>':'');
+  return '<button class="chip'+(on?'':' off')+'" data-id="'+r.id+'" style="--c:'+mk(r.m).c+'" aria-label="'+esc(r.t)+(on?'':' (does not apply to your profile)')+'"><b>'+esc(r.t)+'</b><span>'+esc(r.s)+'</span><span class="tags">'+tags+'</span></button>';
+}
+function renderMap(){
+  var ms = shownMarkets(), g=$("grid");
+  g.style.setProperty("--cols", ms.length);
+  var h = '<div class="mh" style="background:var(--bg-soft)"><b style="font-size:13px;font-family:var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)">Area</b></div>';
+  ms.forEach(function(m){ var n=R.filter(function(r){return r.m===m.id && applies(r.w);}).length; h+='<div class="mh" style="--c:'+m.c+'"><b><i></i>'+esc(m.name)+'</b><small>'+n+' apply · '+esc(m.sub)+'</small><div class="bar"></div></div>'; });
+  DOMAINS.forEach(function(d){
+    h += '<div class="rl"><b>'+esc(d.name)+'</b><small>'+esc(d.sub)+'</small></div>';
+    ms.forEach(function(m){
+      var rs = R.filter(function(r){ return r.m===m.id && r.d===d.id; });
+      rs.sort(function(a,b){ return (applies(b.w)?1:0)-(applies(a.w)?1:0); });
+      h += '<div class="cell'+(rs.length?'':' empty')+'" data-m="'+m.id+'" data-hidden="'+(m.id===S.tab?0:1)+'">'+rs.map(chip).join("")+'</div>';
+    });
+  });
+  g.innerHTML = h;
+  $("mtabs").innerHTML = ms.map(function(m){ return '<button role="tab" data-m="'+m.id+'" aria-selected="'+(m.id===S.tab)+'" style="--c:'+m.c+'"><i></i>'+esc(m.name)+'</button>'; }).join("");
+}
+$("mtabs").addEventListener("click",function(e){ var b=e.target.closest("button"); if(!b) return; S.tab=b.dataset.m; save(); renderMap(); });
+$("grid").addEventListener("click",function(e){ var b=e.target.closest(".chip"); if(b) openRule(b.dataset.id, b); });
+$("hideoff").addEventListener("change",function(){ $("grid").classList.toggle("hide-off", this.checked); });
+
+/* ---------- standards ---------- */
+function renderStds(){
+  $("stds").innerHTML = STDS.map(function(s){ return '<div class="std'+(applies(s.w)?'':' off')+'"><b>'+esc(s.k)+'</b><p>'+esc(s.t)+'</p></div>'; }).join("");
+}
+
+/* ---------- timeline ---------- */
+function events(){
+  var ev=[];
+  R.forEach(function(r){ (r.dates||[]).forEach(function(d){ ev.push({d:d[0], t:d[1], r:r, a:d[2]}); }); });
+  ev.sort(function(a,b){ return a.d<b.d?-1:a.d>b.d?1:0; });
+  return ev;
+}
+function renderTL(){
+  var ev = events().filter(function(e){ return S.markets[e.r.m]; });
+  var next = ev.filter(function(e){ return e.d>=TODAY && applies(e.r.w); })[0];
+  var years = {}; ev.forEach(function(e){ var y=e.d.slice(0,4); (years[y]=years[y]||[]).push(e); });
+  var h="", todayDone=false, ty=TODAY.slice(0,4);
+  Object.keys(years).sort().forEach(function(y){
+    h += '<div class="yr'+(y===ty?' now':'')+'"><h3>'+y+'</h3><div class="evs">';
+    years[y].forEach(function(e){
+      if(!todayDone && e.d>=TODAY){ h+='<div class="todayline">TODAY · '+fmt(TODAY).toUpperCase()+'</div>'; todayDone=true; }
+      var on=applies(e.r.w), past=e.d<TODAY, isNext=next && e===next;
+      h += '<button class="ev'+(past?' past':'')+(on?'':' off')+(isNext?' nextup':'')+'" data-id="'+e.r.id+'" style="--c:'+mk(e.r.m).c+'"><time datetime="'+e.d+'">'+fmt(e.d,e.a)+'</time><div><b>'+esc(e.t)+(isNext?'<span class="flag">NEXT FOR YOU</span>':'')+'</b><span>'+esc(mk(e.r.m).name)+' · '+esc(e.r.t)+'</span></div></button>';
+    });
+    if(!todayDone && y===ty){ h+='<div class="todayline">TODAY · '+fmt(TODAY).toUpperCase()+'</div>'; todayDone=true; }
+    h += '</div></div>';
+  });
+  $("tl").innerHTML = h;
+  return next;
+}
+$("tl").addEventListener("click",function(e){ var b=e.target.closest(".ev"); if(b) openRule(b.dataset.id, b); });
+
+/* ---------- launch path ---------- */
+function renderPath(){
+  $("stages").innerHTML = STAGES.map(function(st,si){
+    var vis = st.items.map(function(it,ii){ return {it:it, key:si+"-"+ii, on:applies(it[1])}; });
+    var shown = vis.filter(function(v){return v.on;}), done = shown.filter(function(v){return ticks[v.key];}).length;
+    var pct = shown.length? Math.round(done/shown.length*100):0;
+    return '<div class="stage"><header><h3>'+esc(st.t)+'</h3><span class="prog'+(done===shown.length&&shown.length?' done':'')+'">'+done+'/'+shown.length+'</span></header><ul>'+
+      vis.map(function(v){ return '<li><label class="'+(v.on?'':'na')+'"><input type="checkbox" data-k="'+v.key+'"'+(ticks[v.key]?' checked':'')+'><span>'+esc(v.it[0])+'</span></label></li>'; }).join("")+
+      '</ul><div class="bar2"><i style="width:'+pct+'%"></i></div></div>';
+  }).join("");
+}
+$("stages").addEventListener("change",function(e){ var k=e.target.dataset.k; if(!k) return; if(e.target.checked) ticks[k]=1; else delete ticks[k]; saveTicks(); renderPath(); });
+$("reset").addEventListener("click",function(){ ticks={}; saveTicks(); renderPath(); });
+
+/* ---------- drawer ---------- */
+var lastFocus=null;
+function openRule(id, from){
+  var r=byId[id]; if(!r) return; lastFocus=from||document.activeElement;
+  var m=mk(r.m), d=dm(r.d), on=applies(r.w), st=STL[r.st];
+  $("dr-meta").innerHTML = '<span class="dr-mk" style="--c:'+m.c+'">'+esc(m.name)+'</span><span class="tag">'+esc(d.name)+'</span><span class="tag '+st[0]+'">'+st[1]+'</span>';
+  $("dr-title").textContent = r.t;
+  $("dr-sum").textContent = r.sum;
+  var why = on ? "Applies to your profile." : "Doesn't apply to your current profile. Change your answers above if your product changes.";
+  var h = '<div class="applies '+(on?'yes':'no')+'">'+(on?'✓ ':'')+esc(why)+'</div>';
+  h += '<h4>What it asks of you</h4><ul>'+r.dos.map(function(x){return '<li>'+esc(x)+'</li>';}).join("")+'</ul>';
+  if(r.dates && r.dates.length){ h += '<h4>Key dates</h4><div class="dr-dates">'+r.dates.map(function(x){ return '<div><time datetime="'+x[0]+'">'+fmt(x[0],x[2])+'</time><span>'+esc(x[1])+(x[0]<TODAY?' <span class="tag">past</span>':'')+'</span></div>'; }).join("")+'</div>'; }
+  if(r.rel && r.rel.length){ h += '<h4>Connected rules</h4><div class="dr-rel">'+r.rel.filter(function(x){return byId[x];}).map(function(x){ return '<button data-id="'+x+'">'+esc(byId[x].t)+'</button>'; }).join("")+'</div>'; }
+  if(r.src && r.src.length){ h += '<h4>Sources</h4><div class="dr-src">'+r.src.map(function(s){ return '<a href="'+esc(s[1])+'" target="_blank" rel="noopener">'+esc(s[0])+' ↗</a>'; }).join("")+'</div>'; }
+  $("dr-body").innerHTML = h; $("dr-body").scrollTop=0;
+  $("drawer").classList.add("on"); $("drawer").setAttribute("aria-hidden","false"); $("scrim").classList.add("on");
+  document.body.style.overflow="hidden";
+  try{ history.replaceState(null,"","#"+id); }catch(e){}
+  $("dr-x").focus();
+}
+function closeRule(){
+  $("drawer").classList.remove("on"); $("drawer").setAttribute("aria-hidden","true"); $("scrim").classList.remove("on");
+  document.body.style.overflow="";
+  try{ history.replaceState(null,"",location.pathname); }catch(e){}
+  if(lastFocus && lastFocus.focus) lastFocus.focus();
+}
+$("dr-x").addEventListener("click",closeRule);
+$("scrim").addEventListener("click",closeRule);
+document.addEventListener("keydown",function(e){ if(e.key==="Escape" && $("drawer").classList.contains("on")) closeRule(); });
+$("dr-body").addEventListener("click",function(e){ var b=e.target.closest(".dr-rel button"); if(b) openRule(b.dataset.id, lastFocus); });
+
+/* ---------- update ---------- */
+function update(){
+  save(); renderBuilder(); renderMap(); renderStds(); renderPath();
+  var next = renderTL();
+  var n = R.filter(function(r){ return S.markets[r.m] && applies(r.w); }).length;
+  $("r-count").textContent = n;
+  $("r-std").textContent = STDS.filter(function(s){ return applies(s.w); }).length;
+  $("r-next").innerHTML = next ? 'Next deadline for you: <b>'+fmt(next.d,next.a)+'</b> · '+esc(next.t) : 'No upcoming deadlines for this profile.';
+}
+update();
+if(location.hash && byId[location.hash.slice(1)]) openRule(location.hash.slice(1));
+})();
+</script>
+</body>
+</html>
